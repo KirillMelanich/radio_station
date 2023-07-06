@@ -13,21 +13,22 @@ class Genre(models.Model):
 
 
 class Artist(AbstractUser):
-    name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=255)
+    band_name = models.CharField(max_length=255, default="Solo artist")
 
     class Meta:
         verbose_name = "artist"
         verbose_name_plural = "artists"
 
     def __str__(self):
-        return f"{self.username} ({self.first_name} {self.last_name})"
+        return f"{self.username}"
 
 
 class Song(models.Model):
     song = models.CharField(max_length=255)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     artist = models.ManyToManyField(Artist, related_name="songs")
+    youtube_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.song

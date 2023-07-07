@@ -51,3 +51,28 @@ class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
 class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
     success_url = reverse_lazy("catalog:genre-list")
+
+
+class ArtistListView(LoginRequiredMixin, generic.ListView):
+    model = Artist
+    context_object_name = "artist_list"
+    template_name = "catalog/artist_list.html"
+    paginate_by = 5
+    queryset = Artist.objects.all()
+
+
+class ArtistCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Artist
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:artist-list")
+
+
+class ArtistUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Artist
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:artist-list")
+
+
+class ArtistDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Artist
+    success_url = reverse_lazy("catalog:artist-list")

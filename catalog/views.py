@@ -28,7 +28,7 @@ def index(request):
     return render(request, "catalog/index.html", context=context)
 
 
-class ManufacturerListView(LoginRequiredMixin, generic.ListView):
+class GenreListView(LoginRequiredMixin, generic.ListView):
     model = Genre
     context_object_name = "genre_list"
     template_name = "catalog/genre_list.html"
@@ -36,18 +36,18 @@ class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     queryset = Genre.objects.all()
 
 
-class ManufacturerCreateView(LoginRequiredMixin, generic.CreateView):
+class GenreCreateView(LoginRequiredMixin, generic.CreateView):
     model = Genre
     fields = "__all__"
     success_url = reverse_lazy("catalog:genre-list")
 
 
-class ManufacturerUpdateView(LoginRequiredMixin, generic.UpdateView):
+class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Genre
     fields = "__all__"
     success_url = reverse_lazy("catalog:genre-list")
 
 
-class ManufacturerDeleteView(LoginRequiredMixin, generic.DeleteView):
+class GenreDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Genre
     success_url = reverse_lazy("catalog:genre-list")

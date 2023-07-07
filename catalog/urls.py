@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import (
     index,
+    GenreListView, GenreCreateView, GenreUpdateView, GenreDeleteView,
 
 )
 

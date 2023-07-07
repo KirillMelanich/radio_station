@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Title: {{ song.song }}
+  <a style="float: right" class="btn btn-secondary" href="{% url 'catalog:song-update' pk=song.id %}">Edit</a>
+  </h1>
+  <p><strong>Format: {{ song.genre.style }}</strong></p>
+
+  <div class="ml-3">
+    <h3>Artists</h3>
+
+    {% for artist in song.artists.all %}
+      <hr>
+      <p class="text-muted"><strong>Id</strong>{{ artist.id }}</p>
+      <p>
+        <strong>Artist name:</strong>
+        {{ artist.first_name }} {{ artist.last_name }}
+        {% if artist.band_name %}({{ artist.band_name }}){% endif %}
+      </p>
+      {% empty %}
+      <p>No artists, asshole!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Username: {{ Artist.username }}
+    <a href="{% url 'catalog:genre-delete' pk=artist.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'catalog:genre-update' pk=artist.id %}" class="btn btn-secondary link-to-page">
+      Update information
+    </a>
+  </h1>
+
+  <p><strong>First name:</strong> {{ artist.first_name }}</p>
+  <p><strong>Last name:</strong> {{ artist.last_name }}</p>
+  <p><strong>Band name:</strong> {{ artist.band_name }}</p>
+  <p><strong>Country:</strong> {{ artist.country }}</p>
+
+{#  <div class="ml-3">#}
+{#    <h4>Cars</h4>#}
+{##}
+{#    {% for car in driver.cars.all %}#}
+{#        <hr>#}
+{#        <p><strong>Model:</strong> {{ car.model }}</p>#}
+{#        <p><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>#}
+{#        <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>#}
+{##}
+{#    {% empty %}#}
+{#      <p>No cars!</p>#}
+{#    {% endfor %}#}
+{#  </div>#}
+{% endblock %}

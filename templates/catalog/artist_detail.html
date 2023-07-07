@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>
-    Username: {{ Artist.username }}
+    Username: {{ artist.username }}
     <a href="{% url 'catalog:genre-delete' pk=artist.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
@@ -16,18 +16,18 @@
   <p><strong>Last name:</strong> {{ artist.last_name }}</p>
   <p><strong>Band name:</strong> {{ artist.band_name }}</p>
   <p><strong>Country:</strong> {{ artist.country }}</p>
+  <p><strong>Total song by this artist:</strong> {{ artist.songs.all.count }}</p>
 
-{#  <div class="ml-3">#}
-{#    <h4>Cars</h4>#}
-{##}
-{#    {% for car in driver.cars.all %}#}
-{#        <hr>#}
-{#        <p><strong>Model:</strong> {{ car.model }}</p>#}
-{#        <p><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>#}
-{#        <p class="text-muted"><strong>Id:</strong> {{car.id}}</p>#}
-{##}
-{#    {% empty %}#}
-{#      <p>No cars!</p>#}
-{#    {% endfor %}#}
-{#  </div>#}
+  <div class="ml-3">
+    <h4>Songs:</h4>
+
+    {% for song in artist.songs.all %}
+        <hr>
+        <p> {{ song.song }}</p>
+        <p><strong>Genre:</strong> {{ song.genre.style }}</p>
+
+    {% empty %}
+      <p>No songs!</p>
+    {% endfor %}
+  </div>
 {% endblock %}

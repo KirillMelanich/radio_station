@@ -6,5 +6,8 @@ from .views import (
 )
 
 urlpatterns = [
-    path("", index, name=index),
+    path("", index, name="index"),
+    path("catalog/", index, name="index"),
 ]
+
+app_name = "catalog"

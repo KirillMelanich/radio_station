@@ -1,5 +1,8 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic
 
 from catalog.models import Artist, Song, Genre
 
@@ -23,3 +26,28 @@ def index(request):
     }
 
     return render(request, "catalog/index.html", context=context)
+
+
+class ManufacturerListView(LoginRequiredMixin, generic.ListView):
+    model = Genre
+    context_object_name = "genre_list"
+    template_name = "catalog/genre_list.html"
+    paginate_by = 5
+    queryset = Genre.objects.all()
+
+
+class ManufacturerCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Genre
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:genre-list")
+
+
+class ManufacturerUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Genre
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:genre-list")
+
+
+class ManufacturerDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Genre
+    success_url = reverse_lazy("catalog:genre-list")

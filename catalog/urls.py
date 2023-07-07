@@ -11,6 +11,11 @@ from .views import (
     ArtistUpdateView,
     ArtistDeleteView,
     ArtistDetailView,
+    SongDeleteView,
+    SongUpdateView,
+    SongDetailView,
+    SongCreateView,
+    SongListView,
 
 )
 
@@ -48,7 +53,7 @@ urlpatterns = [
         name="artist-create",
     ),
     path(
-        "artistss/<int:pk>/",
+        "artists/<int:pk>/",
         ArtistDetailView.as_view(),
         name="artist-detail",
     ),
@@ -61,6 +66,31 @@ urlpatterns = [
         "artists/<int:pk>/delete/",
         ArtistDeleteView.as_view(),
         name="artist-delete",
+    ),
+    path(
+        "songs/",
+        SongListView.as_view(),
+        name="song-list",
+    ),
+    path(
+        "songs/create/",
+        SongCreateView.as_view(),
+        name="song-create",
+    ),
+    path(
+        "songs/<int:pk>/",
+        SongDetailView.as_view(),
+        name="song-detail",
+    ),
+    path(
+        "songs/<int:pk>/update/",
+        SongUpdateView.as_view(),
+        name="song-update",
+    ),
+    path(
+        "songs/<int:pk>/delete/",
+        SongDeleteView.as_view(),
+        name="song-delete",
     ),
 ]
 

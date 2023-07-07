@@ -10,6 +10,7 @@ from .views import (
     ArtistCreateView,
     ArtistUpdateView,
     ArtistDeleteView,
+    ArtistDetailView,
 
 )
 
@@ -45,6 +46,11 @@ urlpatterns = [
         "artists/create/",
         ArtistCreateView.as_view(),
         name="artist-create",
+    ),
+    path(
+        "artistss/<int:pk>/",
+        ArtistDetailView.as_view(),
+        name="artist-detail",
     ),
     path(
         "artists/<int:pk>/update/",

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    Genre List
+    <a href="{% url 'catalog:artist-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="Search 🔎">
+  </form>
+  {% if artist_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Band name</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Country</th>
+      </tr>
+
+      {% for artist in artist_list %}
+      <tr>
+        <td>{{ artist.id }}</td>
+        <td><a href="{{ artist.get_absolute_url }}">{{ artist.username }} {% if user == artist %} (Me){% endif %}</a></td>
+        <td><a href="{{ artist.get_absolute_url }}">{{ artist.band_name }} {% if user == artist %} (Me){% endif %}</a></td>
+        <td>{{ artist.first_name }}</td>
+        <td>{{ artist.last_name }}</td>
+        <td>{{ artist.country }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no artists here, sorry(.</p>
+  {% endif %}
+{% endblock %}

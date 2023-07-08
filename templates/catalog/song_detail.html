@@ -16,7 +16,7 @@
       <p>
         <strong>Artist name:</strong>
         {{ artist.first_name }} {{ artist.last_name }}
-        {% if artist.band_name %}({{ artist.band_name }}){% endif %}
+        {% if artist.band_name %}(<a href="{{artist.get_absolute_url}}">{{ artist.band_name }})</a>{% endif %}
       </p>
       {% empty %}
       <p>No artists, asshole!</p>

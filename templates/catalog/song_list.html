@@ -3,26 +3,44 @@
 
 {% block content %}
   <h1>
-    Song list
-    <a href="{% url 'catalog:song-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
+    Song List
+  <a style="float: right" class="btn btn-primary" href="{% url 'catalog:song-create' %}">+</a>
   </h1>
+  <hr>
   <form action="" method="get" class="form-inline">
   {{ search_form|crispy }}
     <input class="btn btn-secondary" type="submit" value="🔎">
   </form>
+  <hr>
   {% if song_list %}
-    <ul>
-      {% for song in song_list %}
-        <li>
-          <a href="{% url "catalog:song-detail" pk=song.id %} ">{{ song.id }}</a>
-          <a href="{{ song.get_absolute_url }}">{{ song.song }}</a>
-         ({{ song.genre.style }})
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no song here(...</p>
-  {% endif %}
+    <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Song Name</th>
+      <th>Artist</th>
+      <th>Genre</th>
+    </tr>
+
+    {% for song in song_list %}
+    <tr>
+      <td>
+        <a href="{{song.get_absolute_url}}">{{ song.id }}</a>
+      </td>
+      <td>
+        <a href="{{song.get_absolute_url}}">{{ song.song }}</a>
+      </td>
+      <td>
+        {{ song.artists.all }}
+      </td>
+      <td>
+        {{ song.genre }}
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+    {% else %}
+      <p>No songs, sorry</p>
+    {% endif %}
+
+
 {% endblock %}

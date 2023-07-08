@@ -23,7 +23,7 @@
 
     {% for song in artist.songs.all %}
         <hr>
-        <p> {{ song.song }}</p>
+      <p><a href="{{song.get_absolute_url}}">{{ song.song }}</a></p>
         <p><strong>Genre:</strong> {{ song.genre.style }}</p>
 
     {% empty %}

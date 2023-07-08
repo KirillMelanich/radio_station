@@ -63,7 +63,7 @@ class ArtistListView(LoginRequiredMixin, generic.ListView):
 
 class ArtistDetailView(LoginRequiredMixin, generic.DetailView):
     model = Artist
-    queryset = Artist.objects.all().prefetch_related("songs__style")
+    queryset = Artist.objects.all().prefetch_related("songs__genre")
 
 
 class ArtistCreateView(LoginRequiredMixin, generic.CreateView):

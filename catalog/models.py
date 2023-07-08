@@ -31,7 +31,11 @@ class Artist(AbstractUser):
 
 class Song(models.Model):
     song = models.CharField(max_length=255)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    genre = models.ForeignKey(
+        Genre,
+        on_delete=models.CASCADE,
+        related_name="songs"
+    )
     artists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="songs")
     youtube_link = models.URLField(blank=True, null=True)
 

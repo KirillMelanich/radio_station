@@ -5,7 +5,7 @@
     Title: {{ song.song }}
   <a style="float: right" class="btn btn-secondary" href="{% url 'catalog:song-update' pk=song.id %}">Edit</a>
   </h1>
-  <p><strong>Format: {{ song.genre.style }}</strong></p>
+  <p><strong>Genre: {{ song.genre.style }}</strong></p>
 
   <div class="ml-3">
     <h3>Artists</h3>
@@ -15,8 +15,7 @@
       <p class="text-muted"><strong>Id</strong>{{ artist.id }}</p>
       <p>
         <strong>Artist name:</strong>
-        {{ artist.first_name }} {{ artist.last_name }}
-        {% if artist.band_name %}(<a href="{{artist.get_absolute_url}}">{{ artist.band_name }})</a>{% endif %}
+        {% if artist.artist_name %}<a href="{{artist.get_absolute_url}}">{{ artist.artist_name }}</a>{% endif %}
       </p>
       {% empty %}
       <p>No artists, asshole!</p>

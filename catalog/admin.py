@@ -5,9 +5,9 @@ from .models import Song, Artist, Genre
 
 @admin.register(Artist)
 class ArtistAdmin(UserAdmin):
-    list_display = UserAdmin.list_display + ("country", "band_name")
+    list_display = UserAdmin.list_display + ("country", "artist_name")
     fieldsets = UserAdmin.fieldsets + (
-        (("Additional info", {"fields": ("country", "band_name")}),)
+        (("Additional info", {"fields": ("country", "artist_name")}),)
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
         (
@@ -15,9 +15,7 @@ class ArtistAdmin(UserAdmin):
                 "Additional info",
                 {
                     "fields": (
-                        "first_name",
-                        "last_name",
-                        "band_name",
+                        "artist_name",
                         "country",
                         "email"
                     )

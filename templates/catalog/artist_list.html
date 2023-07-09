@@ -17,20 +17,14 @@
     <table class="table">
       <tr>
         <th>ID</th>
-        <th>Username</th>
-        <th>Band name</th>
-        <th>First name</th>
-        <th>Last name</th>
+        <th>Artist name</th>
         <th>Country</th>
       </tr>
 
       {% for artist in artist_list %}
       <tr>
         <td>{{ artist.id }}</td>
-        <td><a href="{{ artist.get_absolute_url }}">{{ artist.username }} {% if user == artist %} (Me){% endif %}</a></td>
-        <td><a href="{{ artist.get_absolute_url }}">{{ artist.band_name }} {% if user == artist %} (Me){% endif %}</a></td>
-        <td>{{ artist.first_name }}</td>
-        <td>{{ artist.last_name }}</td>
+        <td><a href="{{ artist.get_absolute_url }}">{{ artist.artist_name }} {% if user == artist %} (Me){% endif %}</a></td>
         <td>{{ artist.country }}</td>
       </tr>
     {% endfor %}

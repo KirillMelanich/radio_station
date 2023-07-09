@@ -16,7 +16,7 @@ class Genre(models.Model):
 
 class Artist(AbstractUser):
     country = models.CharField(max_length=255)
-    band_name = models.CharField(max_length=255, default="Solo artist")
+    artist_name = models.CharField(max_length=255, default="Solo artist")
 
     class Meta:
         verbose_name = "artist"

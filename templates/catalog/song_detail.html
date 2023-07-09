@@ -8,7 +8,7 @@
   <p><strong>Genre: {{ song.genre.style }}</strong></p>
 
   <div class="ml-3">
-    <h3>Artists</h3>
+    <h3>Artists:</h3>
 
     {% for artist in song.artists.all %}
       <hr>
@@ -18,13 +18,12 @@
         {% if artist.artist_name %}<a href="{{artist.get_absolute_url}}">{{ artist.artist_name }}</a>{% endif %}
       </p>
       {% empty %}
-      <p>No artists, asshole!</p>
+      <p>No songs, sorry...(</p>
     {% endfor %}
   </div>
-  <br>
   <div>
     {% if song.youtube_link %}
-    <a href="{{ song.youtube_link }}">Watch on YouTube</a>
+        <a href="{{ song.youtube_link }}">Watch on YouTube</a>
     {% endif %}
   </div>
 {% endblock %}

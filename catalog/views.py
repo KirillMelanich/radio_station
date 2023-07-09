@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from catalog.forms import SongForm
 from catalog.models import Artist, Song, Genre
 
 
@@ -62,7 +63,7 @@ class ArtistListView(LoginRequiredMixin, generic.ListView):
     model = Artist
     context_object_name = "artist_list"
     template_name = "catalog/artist_list.html"
-    paginate_by = 5
+    paginate_by = 10
     queryset = Artist.objects.all()
 
 
@@ -92,7 +93,7 @@ class SongListView(LoginRequiredMixin, generic.ListView):
     model = Song
     context_object_name = "song_list"
     template_name = "catalog/song_list.html"
-    paginate_by = 5
+    paginate_by = 10
     queryset = Song.objects.select_related("genre")
 
 
@@ -102,8 +103,9 @@ class SongDetailView(LoginRequiredMixin, generic.DetailView):
 
 class SongCreateView(LoginRequiredMixin, generic.CreateView):
     model = Song
-    fields = "__all__"
-    success_url = reverse_lazy("catalog:song-list")
+    form = SongForm
+    # fields = "__all__"
+    # success_url = reverse_lazy("catalog:song-list")
 
 
 class SongUpdateView(LoginRequiredMixin, generic.UpdateView):

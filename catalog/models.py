@@ -43,8 +43,12 @@ class Song(models.Model):
     artists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="songs")
     youtube_link = models.URLField(blank=True, null=True)
 
+    class Meta:
+        ordering = ["song"]
+
     def __str__(self):
         return self.song
 
     def get_absolute_url(self):
         return reverse("catalog:song-detail", kwargs={"pk": self.pk})
+

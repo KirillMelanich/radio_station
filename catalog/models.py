@@ -17,6 +17,7 @@ class Genre(models.Model):
 class Artist(AbstractUser):
     country = models.CharField(max_length=255)
     artist_name = models.CharField(max_length=255, default="Solo artist")
+    youtube_link = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = "artist"

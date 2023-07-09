@@ -34,7 +34,7 @@ class SongSearchForm(forms.Form):
 
 
 class ArtistSearchForm(forms.Form):
-    song = forms.CharField(
+    artist_name = forms.CharField(
         max_length=255,
         required=False,
         label="",

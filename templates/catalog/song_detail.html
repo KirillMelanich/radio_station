@@ -3,7 +3,14 @@
 {% block content %}
   <h1>
     Title: {{ song.song }}
-  <a style="float: right" class="btn btn-secondary" href="{% url 'catalog:song-update' pk=song.id %}">Edit</a>
+  {{ song.song }}
+    <a href="{% url 'catalog:song-delete' pk=song.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'catalog:song-update' pk=song.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
   </h1>
   <p><strong>Genre: {{ song.genre.style }}</strong></p>
 

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import SongForm
+from catalog.forms import SongForm, SongSearchForm
 from catalog.models import Artist, Song, Genre
 
 
@@ -95,6 +95,30 @@ class SongListView(LoginRequiredMixin, generic.ListView):
     template_name = "catalog/song_list.html"
     paginate_by = 10
     queryset = Song.objects.select_related("genre")
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(SongListView, self).get_context_data(**kwargs)
+
+        song = self.request.GET.get("song", "")
+
+        context["search_form"] = SongSearchForm(
+            initial={
+                "song": song
+            }
+        )
+
+        return context
+
+    def get_queryset(self):
+        queryset = Song.objects.select_related("genre")
+        form = SongSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                song__icontains=form.cleaned_data["song"],
+            )
+
+        return queryset
 
 
 class SongDetailView(LoginRequiredMixin, generic.DetailView):

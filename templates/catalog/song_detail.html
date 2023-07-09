@@ -21,4 +21,10 @@
       <p>No artists, asshole!</p>
     {% endfor %}
   </div>
+  <br>
+  <div>
+    {% if song.youtube_link %}
+    <a href="{{ song.youtube_link }}">Watch on YouTube</a>
+    {% endif %}
+  </div>
 {% endblock %}

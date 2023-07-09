@@ -20,7 +20,7 @@ class Genre(models.Model):
 
 class Artist(AbstractUser):
     country = models.CharField(max_length=255)
-    artist_name = models.CharField(max_length=255, default="Solo artist")
+    artist_name = models.CharField(max_length=255, default="unknown artist")
 
     class Meta:
         verbose_name = "artist"

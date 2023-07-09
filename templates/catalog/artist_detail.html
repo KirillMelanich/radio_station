@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>
-    Username: {{ artist.username }}
+    Artist: {{ artist.artist_name }}
     <a href="{% url 'catalog:genre-delete' pk=artist.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
@@ -12,7 +12,6 @@
     </a>
   </h1>
 
-  <p><strong>Band name:</strong> {{ artist.artist_name }}</p>
   <p><strong>Country:</strong> {{ artist.country }}</p>
   <p><strong>Total song by this artist:</strong> {{ artist.songs.all.count }}</p>
 
@@ -22,7 +21,7 @@
     {% for song in artist.songs.all %}
         <hr>
       <p><a href="{{song.get_absolute_url}}">{{ song.song }}</a></p>
-        <p><strong>Genre:</strong> {{ song.genre.style }}</p>
+        <p>Genre: {{ song.genre.style }}</p>
 
     {% empty %}
       <p>No songs!</p>

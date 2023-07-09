@@ -28,8 +28,7 @@
               {{ genre.id }}
           </td>
           <td>
-              {{ genre.style }}
-          </td>
+            <a href="{{genre.get_absolute_url}}">{{ genre.style }}</a>
           <td>
               <a href="{% url 'catalog:genre-update' pk=genre.id %}">
                 Update

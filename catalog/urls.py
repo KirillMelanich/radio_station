@@ -37,7 +37,7 @@ urlpatterns = [
         "genres/<int:pk>/",
         GenreDetailView.as_view(),
         name="genre-detail",
-    )
+    ),
     path(
         "genres/<int:pk>/update/",
         GenreUpdateView.as_view(),

@@ -16,6 +16,7 @@ from .views import (
     SongDetailView,
     SongCreateView,
     SongListView,
+    GenreDetailView,
 
 )
 
@@ -32,6 +33,11 @@ urlpatterns = [
         GenreCreateView.as_view(),
         name="genre-create",
     ),
+    path(
+        "genres/<int:pk>/",
+        GenreDetailView.as_view(),
+        name="genre-detail",
+    )
     path(
         "genres/<int:pk>/update/",
         GenreUpdateView.as_view(),

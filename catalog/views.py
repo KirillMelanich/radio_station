@@ -36,6 +36,11 @@ class GenreListView(LoginRequiredMixin, generic.ListView):
     queryset = Genre.objects.all()
 
 
+class GenreDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Artist
+    queryset = Artist.objects.all()
+
+
 class GenreCreateView(LoginRequiredMixin, generic.CreateView):
     model = Genre
     fields = "__all__"

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Genre: {{ genre.style }}
+  <a style="float: right" class="btn btn-secondary" href="{% url 'catalog:genre-detail' pk=genre.id %}">Edit</a>
+  </h1>
+
+  <div class="ml-3">
+    <p><strong>Song of this genre on platform:</strong> {{ genre.songs.all.count }}</p>
+  </div>
+  <div class="ml-3">
+  <p><strong>About Genre:</strong> </p>
+    <p>{{ genre.about_genre }}</p>
+  </div>
+{% endblock %}

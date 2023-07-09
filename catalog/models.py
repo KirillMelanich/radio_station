@@ -14,6 +14,9 @@ class Genre(models.Model):
     def __str__(self):
         return f"{self.style}"
 
+    def get_absolute_url(self):
+        return reverse("catalog:genre-detail", kwargs={"pk": self.pk})
+
 
 class Artist(AbstractUser):
     country = models.CharField(max_length=255)

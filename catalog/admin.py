@@ -17,7 +17,7 @@ class ArtistAdmin(UserAdmin):
                     "fields": (
                         "artist_name",
                         "country",
-                        "email"
+                        "email",
                     )
                 },
             ),

@@ -22,3 +22,12 @@ class SongForm(forms.ModelForm):
     class Meta:
         model = Song
         fields = "__all__"
+
+
+class SongSearchForm(forms.Form):
+    song = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by song name..."})
+    )

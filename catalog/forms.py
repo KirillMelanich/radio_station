@@ -31,3 +31,12 @@ class SongSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by song name..."})
     )
+
+
+class ArtistSearchForm(forms.Form):
+    song = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by artist..."})
+    )

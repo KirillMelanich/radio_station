@@ -89,7 +89,7 @@ class ArtistListView(LoginRequiredMixin, generic.ListView):
     model = Artist
     context_object_name = "artist_list"
     template_name = "catalog/artist_list.html"
-    paginate_by = 10
+    paginate_by = 7
     queryset = Artist.objects.all()
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -143,7 +143,7 @@ class SongListView(LoginRequiredMixin, generic.ListView):
     model = Song
     context_object_name = "song_list"
     template_name = "catalog/song_list.html"
-    paginate_by = 10
+    paginate_by = 7
     queryset = Song.objects.select_related("genre")
 
     def get_context_data(self, *, object_list=None, **kwargs):

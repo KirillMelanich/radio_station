@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
-from catalog.models import Song, Artist
+from catalog.models import Song, Artist, Genre
 
 
 class ArtistCreationForm(UserCreationForm):
@@ -22,6 +22,13 @@ class SongForm(forms.ModelForm):
     class Meta:
         model = Song
         fields = "__all__"
+
+
+class GenreCreationForm(forms.ModelForm):
+
+    class Meta:
+        model = Genre
+        fields = UserCreationForm.Meta.fields + ('style', "about_genre")
 
 
 class SongSearchForm(forms.Form):

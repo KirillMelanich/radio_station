@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete a Song</h1>
-  <p>Are you sure that you want to delete song: {{ song }}</p>
+  <h1>Delete an Artist</h1>
+  <p>Are you sure that you want to delete an artist: <strong>{{ artist.artist_name }}</strong></p>
+  <p>All songs of {{ artist.artist_name }} will be deleted to</p>
 
   <form action="", method="POST">
   {% csrf_token %}

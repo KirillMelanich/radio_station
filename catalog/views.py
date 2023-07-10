@@ -177,14 +177,15 @@ class SongDetailView(LoginRequiredMixin, generic.DetailView):
 
 class SongCreateView(LoginRequiredMixin, generic.CreateView):
     model = Song
-    form = SongForm
-    fields = "__all__"
+    form_class = SongForm
+    # fields = "__all__"
     # success_url = reverse_lazy("catalog:song-list")
 
 
 class SongUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Song
-    fields = "__all__"
+    form_class = SongForm
+    # fields = "__all__"
     success_url = reverse_lazy("catalog:song-list")
 
 

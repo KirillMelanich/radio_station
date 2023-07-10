@@ -50,7 +50,7 @@ class ArtistSearchForm(forms.Form):
 
 
 class GenreSearchForm(forms.Form):
-    song = forms.CharField(
+    style = forms.CharField(
         max_length=255,
         required=False,
         label="",

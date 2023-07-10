@@ -44,14 +44,14 @@ class GenreDetailView(LoginRequiredMixin, generic.DetailView):
 
 class GenreCreateView(LoginRequiredMixin, generic.CreateView):
     model = Genre
-    form_class = GenreForm
+    form = GenreForm
     fields = "__all__"
     success_url = reverse_lazy("catalog:genre-list")
 
 
 class GenreUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Genre
-    form_class = GenreForm
+    form = GenreForm
     fields = "__all__"
     success_url = reverse_lazy("catalog:genre-list")
 

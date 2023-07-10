@@ -24,7 +24,7 @@ class SongForm(forms.ModelForm):
         fields = "__all__"
 
 
-class GenreCreationForm(forms.ModelForm):
+class GenreForm(forms.ModelForm):
 
     class Meta:
         model = Genre

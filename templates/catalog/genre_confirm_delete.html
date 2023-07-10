@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete an Artist</h1>
+  <p>Are you sure that you want to delete aa genre: <strong>{{ genre.style }}</strong></p>
+  <p>All songs of this genre will be deleted to</p>
+
+  <form action="", method="POST">
+  {% csrf_token %}
+    <input type="submit", value="Yes, delete" class="btn btn-danger"/>
+  </form>
+
+
+{% endblock %}

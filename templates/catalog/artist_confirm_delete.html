@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Delete an Artist</h1>
   <p>Are you sure that you want to delete an artist: <strong>{{ artist.artist_name }}</strong></p>
-  <p>All songs of {{ artist.artist_name }} will be deleted to</p>
+  <p>All songs of {{ artist.artist_name }} will be marked as songs without an artist</p>
 
   <form action="", method="POST">
   {% csrf_token %}

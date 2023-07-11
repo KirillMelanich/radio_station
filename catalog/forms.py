@@ -13,6 +13,7 @@ class ArtistCreationForm(UserCreationForm):
 
 
 class SongForm(forms.ModelForm):
+
     artists = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,

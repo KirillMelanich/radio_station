@@ -25,6 +25,7 @@ class Artist(AbstractUser):
     class Meta:
         verbose_name = "artist"
         verbose_name_plural = "artists"
+        ordering = ["artist_name"]
 
     def get_absolute_url(self):
         return reverse("catalog:artist-detail", kwargs={"pk": self.pk})

@@ -3,7 +3,6 @@
 {% block content %}
   <h1>
     Title: {{ song.song }}
-  {{ song.song }}
     <a href="{% url 'catalog:song-delete' pk=song.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>

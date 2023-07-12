@@ -30,7 +30,7 @@ const paths = {
 
 // Compile SCSS
 gulp.task('scss', function() {
-    return gulp.src([paths.src.scss + '/soft-design-system.scss'])
+    return gulp.src([paths.src.scss + '/material-dashboard.scss'])
         .pipe(wait(500))
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -45,7 +45,7 @@ gulp.task('scss', function() {
 // Minify CSS
 gulp.task('minify:css', function() {
     return gulp.src([
-            paths.src.css + '/soft-design-system.css'
+            paths.src.css + '/material-dashboard.css'
         ])
         .pipe(cleanCss())
         .pipe(rename(function(path) {

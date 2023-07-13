@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 
+{% block title %} Artist List {% endblock %}
 
+<body class="" style="background-image: url('static/assets/img/cover.jpg');">
 {% block content %}
   <h1>
     Artists List
@@ -35,3 +37,4 @@
       <p>There are no artists here, sorry(.</p>
   {% endif %}
 {% endblock %}
+</body>

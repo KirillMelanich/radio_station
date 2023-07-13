@@ -4,6 +4,7 @@
 {% block title %} Genre - list {% endblock %}
 
 {% block content %}
+  <body>
   <h1>
     Genre List
     <a href="{% url 'catalog:genre-create' %}" class="btn btn-primary link-to-page">
@@ -49,4 +50,5 @@
   {% else %}
       <p>There are no genres here, sorry(.</p>
   {% endif %}
+  </body>
 {% endblock %}

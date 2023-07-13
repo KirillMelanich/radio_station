@@ -1,6 +1,6 @@
 {#<ul class="sidebar-nav list-group">#}
 {#  {% if user.is_authenticated %}#}
-{#    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>#}
+{#    <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>>#}
 {#    <li class="list-group-item"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>#}
 {#  {% else %}#}
 {#    <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>#}
@@ -19,6 +19,13 @@
         <ul class="nav">
         {% if user.is_authenticated %}
 
+          <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+            <a class="nav-link" href="{{ user.get_absolute_url }}">
+              <i class="material-icons">person</i>
+              <p>{{ user.get_username }}</p>
+            </a>
+
+          </li>
           <li class="nav-item {% if 'index' in segment %} active {% endif %}">
             <a class="nav-link" href="/">
               <i class="material-icons">home</i>
@@ -44,7 +51,7 @@
               <p>All songs</p>
             </a>
           <li class="nav-item ">
-            <a class="nav-link" href="{% url 'logout' %}" >
+            <a class="nav-link" href="{% url 'login'%}?next={{request.path}}"" >
               <i class="material-icons">directions_run</i>
               <p>Logout</p>
             </a>

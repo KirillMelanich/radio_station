@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 
 from catalog.forms import (
     SongForm,
@@ -14,25 +14,30 @@ from catalog.forms import (
 from catalog.models import Artist, Song, Genre
 
 
-@login_required
-def index(request):
-    """View function for the home page of the site."""
+class BaseView(LoginRequiredMixin, View):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
 
-    num_artists = Artist.objects.count()
-    num_songs = Song.objects.count()
-    num_genres = Genre.objects.count()
+    def get(self, request):
+        """View function for the home page of the site."""
 
-    num_visits = request.session.get("num_visits", 0)
-    request.session["num_visits"] = num_visits + 1
+        num_artists = Artist.objects.count()
+        num_songs = Song.objects.count()
+        num_genres = Genre.objects.count()
 
-    context = {
-        "num_artists": num_artists,
-        "num_songs": num_songs,
-        "num_genres": num_genres,
-        "num_visits": num_visits + 1,
-    }
+        num_visits = request.session.get("num_visits", 0)
+        request.session["num_visits"] = num_visits + 1
 
-    return render(request, "catalog/index.html", context=context)
+        context = {
+            "num_artists": num_artists,
+            "num_songs": num_songs,
+            "num_genres": num_genres,
+            "num_visits": num_visits + 1,
+        }
+
+        return render(request, "catalog/index.html", context=context)
 
 
 class GenreListView(LoginRequiredMixin, generic.ListView):

@@ -1,7 +1,6 @@
 from django.urls import path
 
 from .views import (
-    index,
     GenreListView,
     GenreCreateView,
     GenreUpdateView,
@@ -17,11 +16,12 @@ from .views import (
     SongCreateView,
     SongListView,
     GenreDetailView,
+    BaseView,
 )
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("catalog/", index, name="index"),
+    path("", BaseView.as_view(), name="index"),
+    path("catalog/", BaseView.as_view(), name="index"),
     path(
         "genres/",
         GenreListView.as_view(),

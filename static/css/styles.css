@@ -6,3 +6,15 @@ body {
     float: right;
     margin: 0 2px 0 2px;
 }
+
+.sidebar::before {
+    content: "";
+    background-image: url("/static/assets/img/sidebar-2.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.75;
+}

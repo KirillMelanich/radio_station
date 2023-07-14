@@ -8,7 +8,7 @@ from catalog.models import Song, Artist, Genre
 class ArtistCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Artist
-        fields = UserCreationForm.Meta.fields + ("artist_name", "country", "username")
+        fields = UserCreationForm.Meta.fields + ("artist_name", "country", "username", "password")
 
 
 class SongForm(forms.ModelForm):

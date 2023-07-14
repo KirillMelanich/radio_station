@@ -1,32 +1,76 @@
-from django.test import TestCase, Client
+from django.contrib.auth import get_user_model
+from django.test import TestCase
+from catalog.forms import ArtistCreationForm
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 from catalog.models import Genre, Artist, Song
 
+GENRE_URLS = reverse("catalog:genre-list")
+ARTIST_URLS = reverse("catalog:artist-list")
+SONG_URLS = reverse("catalog:song-list")
 
-class IndexViewTest(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.artist = Artist.objects.create_user(username='testuser', password='testpassword')
 
-    def test_index_view_with_login(self):
-        self.client.login(username='testuser', password='testpassword')
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'catalog/index.html')
-        self.assertContains(response, 'Welcome to the home page')
+class PublicGenreTests(TestCase):
+    def test_login_required(self):
+        res = self.client.get(GENRE_URLS)
 
-        # Check if the context variables are passed correctly
-        self.assertEqual(response.context['num_artists'], Artist.objects.count())
-        self.assertEqual(response.context['num_songs'], Song.objects.count())
-        self.assertEqual(response.context['num_genres'], Genre.objects.count())
-        self.assertEqual(response.context['num_visits'], 1)
+        self.assertNotEquals(res.status_code, 200)
 
-        # Check if the session value is incremented correctly
-        self.assertEqual(self.client.session['num_visits'], 1)
 
-    def test_index_view_without_login(self):
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/accounts/login/?next=/')
+class PrivateGenreTests(TestCase):
+    def setUp(self) -> None:
+        self.user = get_user_model().objects.create_user(
+            "test",
+            "password"
+        )
+        self.client.force_login(self.user)
+
+    def test_retrieve_genre(self):
+        Genre.objects.create(style="dub step")
+        Genre.objects.create(style="doom")
+
+        response = self.client.get(GENRE_URLS)
+        genres = Genre.objects.all()
+
+        self.assertEqual(
+            list(response.context["genre_list"]),
+            list(genres)
+        )
+        self.assertTemplateUsed(response, "catalog/genre_list.html")
+
+
+class PublicArtistTests(TestCase):
+    def test_login_required(self):
+        res = self.client.get(ARTIST_URLS)
+
+        self.assertNotEquals(res.status_code, 200)
+
+
+class PrivateArtistTests(TestCase):
+    def setUp(self) -> None:
+        self.user = get_user_model().objects.create_user(
+            "test",
+            "password"
+        )
+        self.client.force_login(self.user)
+
+    def test_retrieve_artist(self):
+        Artist.objects.create(username="radiohead")
+        Artist.objects.create(username="will_smith")
+
+        response = self.client.get(ARTIST_URLS)
+        artists = Artist.objects.all()
+
+        self.assertEqual(
+            list(response.context["artist_list"]),
+            list(artists)
+        )
+        self.assertTemplateUsed(response, "catalog/artist_list.html")
+
+
+class PublicArtistTests(TestCase):
+    def test_login_required(self):
+        res = self.client.get(ARTIST_URLS)
+
+        self.assertNotEquals(res.status_code, 200)
+

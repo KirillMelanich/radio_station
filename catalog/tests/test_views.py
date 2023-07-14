@@ -19,10 +19,7 @@ class PublicGenreTests(TestCase):
 
 class PrivateGenreTests(TestCase):
     def setUp(self) -> None:
-        self.user = get_user_model().objects.create_user(
-            "test",
-            "password"
-        )
+        self.user = get_user_model().objects.create_user("test", "password")
         self.client.force_login(self.user)
 
     def test_retrieve_genre(self):
@@ -32,10 +29,7 @@ class PrivateGenreTests(TestCase):
         response = self.client.get(GENRE_URLS)
         genres = Genre.objects.all()
 
-        self.assertEqual(
-            list(response.context["genre_list"]),
-            list(genres)
-        )
+        self.assertEqual(list(response.context["genre_list"]), list(genres))
         self.assertTemplateUsed(response, "catalog/genre_list.html")
 
 
@@ -48,10 +42,7 @@ class PublicArtistTests(TestCase):
 
 class PrivateArtistTests(TestCase):
     def setUp(self) -> None:
-        self.user = get_user_model().objects.create_user(
-            "test",
-            "password"
-        )
+        self.user = get_user_model().objects.create_user("test", "password")
         self.client.force_login(self.user)
 
     def test_retrieve_artist(self):
@@ -61,10 +52,7 @@ class PrivateArtistTests(TestCase):
         response = self.client.get(ARTIST_URLS)
         artists = Artist.objects.all()
 
-        self.assertEqual(
-            list(response.context["artist_list"]),
-            list(artists)
-        )
+        self.assertEqual(list(response.context["artist_list"]), list(artists))
         self.assertTemplateUsed(response, "catalog/artist_list.html")
 
 
@@ -73,4 +61,3 @@ class PublicArtistTests(TestCase):
         res = self.client.get(ARTIST_URLS)
 
         self.assertNotEquals(res.status_code, 200)
-

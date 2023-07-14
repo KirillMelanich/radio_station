@@ -36,11 +36,7 @@ class Artist(AbstractUser):
 
 class Song(models.Model):
     song = models.CharField(max_length=255)
-    genre = models.ForeignKey(
-        Genre,
-        on_delete=models.CASCADE,
-        related_name="songs"
-    )
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name="songs")
     artists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="songs")
     youtube_link = models.URLField(blank=True, null=True)
 
@@ -52,4 +48,3 @@ class Song(models.Model):
 
     def get_absolute_url(self):
         return reverse("catalog:song-detail", kwargs={"pk": self.pk})
-

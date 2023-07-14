@@ -25,10 +25,7 @@ class ArtistAdminTest(TestCase):
         self.assertTrue(admin.site.is_registered(Artist))
 
     def test_correct_model_admin(self):
-        self.assertIsInstance(
-            admin.site._registry[Artist],
-            ArtistAdmin
-        )
+        self.assertIsInstance(admin.site._registry[Artist], ArtistAdmin)
 
 
 class SongAdminTest(TestCase):
@@ -44,7 +41,4 @@ class SongAdminTest(TestCase):
         self.assertTrue(admin.site.is_registered(Song))
 
     def test_correct_model_admin(self):
-        self.assertIsInstance(
-            admin.site._registry[Song],
-            SongAdmin
-        )
+        self.assertIsInstance(admin.site._registry[Song], SongAdmin)

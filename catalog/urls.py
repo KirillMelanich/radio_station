@@ -17,7 +17,6 @@ from .views import (
     SongCreateView,
     SongListView,
     GenreDetailView,
-
 )
 
 urlpatterns = [

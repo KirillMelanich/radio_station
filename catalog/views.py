@@ -4,7 +4,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import SongForm, SongSearchForm, ArtistSearchForm, GenreForm, GenreSearchForm
+from catalog.forms import (
+    SongForm,
+    SongSearchForm,
+    ArtistSearchForm,
+    GenreForm,
+    GenreSearchForm,
+)
 from catalog.models import Artist, Song, Genre
 
 
@@ -41,11 +47,7 @@ class GenreListView(LoginRequiredMixin, generic.ListView):
 
         style = self.request.GET.get("style", "")
 
-        context["search_form"] = GenreSearchForm(
-            initial={
-                "style": style
-            }
-        )
+        context["search_form"] = GenreSearchForm(initial={"style": style})
 
         return context
 
@@ -97,11 +99,7 @@ class ArtistListView(LoginRequiredMixin, generic.ListView):
 
         artist_name = self.request.GET.get("artist_name", "")
 
-        context["search_form"] = ArtistSearchForm(
-            initial={
-                "artist_name": artist_name
-            }
-        )
+        context["search_form"] = ArtistSearchForm(initial={"artist_name": artist_name})
 
         return context
 
@@ -151,11 +149,7 @@ class SongListView(LoginRequiredMixin, generic.ListView):
 
         song = self.request.GET.get("song", "")
 
-        context["search_form"] = SongSearchForm(
-            initial={
-                "song": song
-            }
-        )
+        context["search_form"] = SongSearchForm(initial={"song": song})
 
         return context
 

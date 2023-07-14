@@ -6,14 +6,12 @@ from catalog.models import Song, Artist, Genre
 
 
 class ArtistCreationForm(UserCreationForm):
-
     class Meta(UserCreationForm.Meta):
         model = Artist
-        fields = UserCreationForm.Meta.fields + ('artist_name', "country", "username")
+        fields = UserCreationForm.Meta.fields + ("artist_name", "country", "username")
 
 
 class SongForm(forms.ModelForm):
-
     artists = forms.ModelMultipleChoiceField(
         queryset=get_user_model().objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -26,7 +24,6 @@ class SongForm(forms.ModelForm):
 
 
 class GenreForm(forms.ModelForm):
-
     class Meta:
         model = Genre
         fields = "__all__"
@@ -37,7 +34,7 @@ class SongSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by song name..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by song name..."}),
     )
 
 
@@ -46,7 +43,7 @@ class ArtistSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by artist..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by artist..."}),
     )
 
 
@@ -55,5 +52,5 @@ class GenreSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by genre..."})
+        widget=forms.TextInput(attrs={"placeholder": "Search by genre..."}),
     )

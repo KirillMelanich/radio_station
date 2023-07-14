@@ -25,7 +25,9 @@ class GenreModelTest(TestCase):
 
 class ArtistModelTest(TestCase):
     def setUp(self):
-        self.artist = Artist.objects.create(username="john", artist_name="John Doe", country="USA")
+        self.artist = Artist.objects.create(
+            username="john", artist_name="John Doe", country="USA"
+        )
 
     def test_artist_username(self):
         self.assertEqual(self.artist.username, "john")
@@ -47,7 +49,9 @@ class ArtistModelTest(TestCase):
 class SongModelTest(TestCase):
     def setUp(self):
         self.genre = Genre.objects.create(style="Rock")
-        self.artist = Artist.objects.create(username="john", artist_name="John Doe", country="USA")
+        self.artist = Artist.objects.create(
+            username="john", artist_name="John Doe", country="USA"
+        )
         self.song = Song.objects.create(song="Song 1", genre=self.genre)
         self.song.artists.add(self.artist)  # Add the artist to the artists field
 

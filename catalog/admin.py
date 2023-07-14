@@ -32,4 +32,3 @@ class SongAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Genre)
-

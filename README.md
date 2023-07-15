@@ -1,67 +1,46 @@
-Django Radio Station
-Django Radio Station is a web application that allows users to browse and manage a collection of songs, authors, and genres.
+# Radio Station
 
-Features
-Browse songs by title, author, or genre.
-Add, edit, and delete songs, authors, and genres.
-Search functionality to find specific songs or authors.
-User authentication and authorization for secure access.
-Installation
-Clone the repository:
+Radio Station is a web application that allows users to explore and manage a collection of songs sorted by genres and artists. Authenticated users have the ability to add, update, and delete data within the website.
 
-bash
-Copy code
-git clone https://github.com/KirillMelanich/radio_station.git
-Create a virtual environment:
+## Installation
 
-bash
-Copy code
-cd django-song-library
-python -m venv env
-Activate the virtual environment:
+1. Clone the repository:
 
-For Windows:
+   ```shell
+   git clone https://github.com/KirillMelanich/radio_station.git
+   
+2. Navigate to the project directory:
+   ```shell
+   cd radio-station
+   
+3. Install dependencies:
+   ```shell
+    pip install -r requirements.txt
+   
+4. Perform database migrations:
+    ```shell
+    python manage.py migrate
 
-bash
-Copy code
-env\Scripts\activate
-For Unix or Linux:
+## Usage
 
-bash
-Copy code
-source env/bin/activate
-Install the required dependencies:
+1. Run the development server:
+     ```shell
+    python manage.py runserver
+2. Open your web browser and visit:
+    ```shell 
+    http://localhost:8001/
+3. Log in using:
+    ```shell 
+      admin: admin
+      password: 1234
+   or create your own user using python manage.py createsuperuser
 
-Copy code
-pip install -r requirements.txt
-Set up the database:
+4. Start exploring and managing the songs, genres, and artists within the Radio Station!
 
-Copy code
-python manage.py migrate
-Create a superuser:
 
-Copy code
-python manage.py createsuperuser
-Start the development server:
-
-Copy code
-python manage.py runserver
-Access the application in your browser at http://localhost:8001.
-
-Configuration
-The project uses SQLite as the default database. If you prefer to use a different database, update the settings in settings.py.
-Usage
-Use the Django admin panel to manage songs, authors, and genres by accessing http://localhost:8001/admin and logging in with the superuser credentials.
-
-To browse the song library and perform searches, visit http://localhost:8001/songs.
-
-Contributing
-Contributions to the Django Song Library project are welcome! If you encounter any bugs or have suggestions for improvements, please submit an issue or a pull request on the GitHub repository.
-
-License
-This project is licensed under the MIT License.
-
-Acknowledgements
-Django: https://www.djangoproject.com/
-Bootstrap: https://getbootstrap.com/
-Feel free to modify this template to suit your specific project needs. Remember to include any additional instructions or details that are relevant to your project
+## Features:
+```shell 
+User authentication: Allow users to sign up, log in, and manage their account.
+Songs: Browse, add, update, and delete songs in the collection.
+Genres: View and manage genres of songs.
+Artists: Explore and manage artists associated with songs.

@@ -33,9 +33,45 @@ Radio Station is a web application that allows users to explore and manage a col
     ```shell 
       admin: admin
       password: 1234
-   or create your own user using python manage.py createsuperuser
+  
+or create your own user using python manage.py createsuperuser
 
 4. Start exploring and managing the songs, genres, and artists within the Radio Station!
+
+# Folder structure:
+         
+                radio_station
+        ├── catalog
+        │   ├── migrations
+        │   ├── static
+        │   ├── templates
+        │   ├── admin.py
+        │   ├── models.py
+        │   ├── views.py
+        │   ├── tests.py
+        │   └── ...
+    ├── radio_station
+    │   ├── settings.py
+    │   ├── urls.py
+    │   ├── wsgi.py
+    │   └── ...
+    ├── templates
+    │   ├── catalog
+    │   ├── includes
+    │   ├── registration
+    │   ├── base.html
+    │   └── ... 
+    ├── static
+    │   ├── asserts
+    │   ├── css
+    │   └── ...
+    ├── manage.py
+    └── README.mdradio-station
+    ├── requirements.py
+    └── .gitignore
+    └── db.sqlite3
+    └── .env
+
 
 
 ## Features:

@@ -21,6 +21,16 @@ Radio Station is a web application that allows users to explore and manage a col
     ```shell
     python manage.py migrate
 
+5. Add these apps to `INSTALLED_APPS` and install them corresponding to the `CRISPY_TEMPLATE_PACK` bootstrap version.
+
+      ```python
+      INSTALLED APPS = [
+      ...,
+      "crispy_bootstrap4",
+      "crispy_forms",
+   ]
+```
+
 ## Usage
 
 1. Run the development server:

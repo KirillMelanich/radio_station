@@ -28,7 +28,7 @@ class ArtistAdmin(UserAdmin):
 @admin.register(Song)
 class SongAdmin(admin.ModelAdmin):
     search_fields = ("song",)
-    list_filter = ("artists", "genre")
+    list_filter = ("artists", "genre", "duration")
 
 
 admin.site.register(Genre)

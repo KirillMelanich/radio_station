@@ -39,6 +39,7 @@ class Song(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name="songs")
     artists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="songs")
     youtube_link = models.URLField(blank=True, null=True)
+    duration = models.DurationField(blank=True, null=True)
 
     class Meta:
         ordering = ["song"]

@@ -1,7 +1,7 @@
 # Radio Station
 
 Radio Station is a web application that allows users to explore and manage a collection of songs sorted by genres and artists. Authenticated users have the ability to add, update, and delete data within the website.
-
+also it can create a playlist of songs of particular genre and number of songs
 ## Installation
 
 1. Clone the repository:

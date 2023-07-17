@@ -38,7 +38,7 @@ also it can create a playlist of songs of particular genre and number of songs
     python manage.py runserver
 2. Open your web browser and visit:
     ```shell 
-    http://localhost:8001/
+    http://localhost:8000/
 3. Log in using:
     ```shell 
       admin: admin

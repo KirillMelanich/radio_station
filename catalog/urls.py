@@ -17,6 +17,9 @@ from .views import (
     SongListView,
     GenreDetailView,
     BaseView,
+    PlaylistListView,
+    PlaylistDetailView,
+    GeneratePlaylistView,
 )
 
 urlpatterns = [
@@ -97,6 +100,22 @@ urlpatterns = [
         SongDeleteView.as_view(),
         name="song-delete",
     ),
+    path(
+        'playlists/',
+        PlaylistListView.as_view(),
+        name='playlist-list'
+    ),
+    path(
+        'playlist/<int:pk>/',
+        PlaylistDetailView.as_view(),
+        name='playlist-detail'
+    ),
+    path(
+        'generate_playlist/',
+        GeneratePlaylistView.as_view(),
+        name='generated-playlist'
+    ),
 ]
+
 
 app_name = "catalog"

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Generate Playlist - My Music App{% endblock %}
+
+{% block content %}
+    <h1>Generate Playlist</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Generate Playlist">
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ playlist.name }} - My Music App{% endblock %}
+
+{% block content %}
+    <h1>{{ playlist.name }}</h1>
+    <p>Genre: {{ playlist.genre.style }}</p>
+    <h2>Songs:</h2>
+    <ul>
+        {% for song in playlist.songs.all %}
+            <li>
+                <a href="{% url 'catalog:song-detail' pk=song.pk %}">{{ song.song }}</a>
+                (
+                {% for artist in song.artists.all %}
+                    <a href="{% url 'catalog:artist-detail' pk=artist.pk %}">{{ artist.artist_name }}</a>
+                {% endfor %}
+                )
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

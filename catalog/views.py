@@ -1,16 +1,17 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic, View
+from django.views.generic import DetailView, ListView
 
 from catalog.forms import (
     SongForm,
     SongSearchForm,
     ArtistSearchForm,
     GenreForm,
-    GenreSearchForm,
+    GenreSearchForm, PlaylistGenerateForm,
 )
-from catalog.models import Artist, Song, Genre
+from catalog.models import Artist, Song, Genre, Playlist
 
 
 class BaseView(LoginRequiredMixin, View):
@@ -188,3 +189,36 @@ class SongUpdateView(LoginRequiredMixin, generic.UpdateView):
 class SongDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Song
     success_url = reverse_lazy("catalog:song-list")
+
+
+class PlaylistListView(ListView):
+    model = Playlist
+    template_name = "catalog/playlist_list.html"
+    context_object_name = "playlists"
+
+
+class PlaylistDetailView(DetailView):
+    model = Playlist
+    template_name = "catalog/playlist_detail.html"
+    context_object_name = "playlist"
+
+
+class GeneratePlaylistView(View):
+    def get(self, request):
+        form = PlaylistGenerateForm()
+        return render(request, 'catalog/generated_playlist.html', {'form': form})
+
+    def post(self, request):
+        form = PlaylistGenerateForm(request.POST)
+        if form.is_valid():
+            genre = form.cleaned_data['genre']
+            num_songs = form.cleaned_data['num_songs']
+
+            playlist = Playlist(name="Generated Playlist", genre=genre)
+            playlist.save()
+            playlist.generate_playlist(num_songs)
+
+            return redirect('catalog:playlist-detail', pk=playlist.pk)
+
+        return render(request, 'catalog/generated_playlist.html', {'form': form})
+

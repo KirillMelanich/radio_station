@@ -1,3 +1,5 @@
+import random
+
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
@@ -49,3 +51,35 @@ class Song(models.Model):
 
     def get_absolute_url(self):
         return reverse("catalog:song-detail", kwargs={"pk": self.pk})
+
+
+class Playlist(models.Model):
+    name = models.CharField(max_length=255)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name="playlists")
+    songs = models.ManyToManyField(Song, related_name="playlists")
+
+    class Meta:
+        verbose_name = "playlist"
+        verbose_name_plural = "playlists"
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse("catalog:playlist-detail", kwargs={"pk": self.pk})
+
+    def generate_playlist(self, num_songs):
+        """
+        Generates a playlist of a particular genre with a specific number of songs.
+        """
+        if num_songs <= 0:
+            return
+
+        genre_songs = list(self.genre.songs.all())
+        random.shuffle(genre_songs)
+
+        if num_songs >= len(genre_songs):
+            self.songs.set(genre_songs)
+        else:
+            self.songs.set(genre_songs[:num_songs])

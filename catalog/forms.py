@@ -54,3 +54,8 @@ class GenreSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by genre..."}),
     )
+
+
+class PlaylistGenerateForm(forms.Form):
+    genre = forms.ModelChoiceField(queryset=Genre.objects.all(), empty_label=None)
+    num_songs = forms.IntegerField(min_value=1, max_value=100)

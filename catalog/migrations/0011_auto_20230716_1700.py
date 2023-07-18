@@ -4,28 +4,31 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('catalog', '0010_genre_about_genre'),
+        ("catalog", "0010_genre_about_genre"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='artist',
-            options={'ordering': ['artist_name'], 'verbose_name': 'artist', 'verbose_name_plural': 'artists'},
+            name="artist",
+            options={
+                "ordering": ["artist_name"],
+                "verbose_name": "artist",
+                "verbose_name_plural": "artists",
+            },
         ),
         migrations.AlterModelOptions(
-            name='song',
-            options={'ordering': ['song']},
+            name="song",
+            options={"ordering": ["song"]},
         ),
         migrations.AddField(
-            model_name='song',
-            name='length',
+            model_name="song",
+            name="length",
             field=models.DurationField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='artist',
-            name='artist_name',
-            field=models.CharField(default='unknown artist', max_length=255),
+            model_name="artist",
+            name="artist_name",
+            field=models.CharField(default="unknown artist", max_length=255),
         ),
     ]

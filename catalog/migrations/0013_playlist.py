@@ -5,24 +5,41 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('catalog', '0012_rename_length_song_duration'),
+        ("catalog", "0012_rename_length_song_duration"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Playlist',
+            name="Playlist",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('genre', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='playlists', to='catalog.genre')),
-                ('songs', models.ManyToManyField(related_name='playlists', to='catalog.Song')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "genre",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="playlists",
+                        to="catalog.genre",
+                    ),
+                ),
+                (
+                    "songs",
+                    models.ManyToManyField(related_name="playlists", to="catalog.Song"),
+                ),
             ],
             options={
-                'verbose_name': 'playlist',
-                'verbose_name_plural': 'playlists',
-                'ordering': ['name'],
+                "verbose_name": "playlist",
+                "verbose_name_plural": "playlists",
+                "ordering": ["name"],
             },
         ),
     ]

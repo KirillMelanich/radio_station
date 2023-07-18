@@ -9,7 +9,8 @@ from catalog.forms import (
     SongSearchForm,
     ArtistSearchForm,
     GenreForm,
-    GenreSearchForm, PlaylistGenerateForm,
+    GenreSearchForm,
+    PlaylistGenerateForm,
 )
 from catalog.models import Artist, Song, Genre, Playlist
 
@@ -206,19 +207,18 @@ class PlaylistDetailView(DetailView):
 class GeneratePlaylistView(View):
     def get(self, request):
         form = PlaylistGenerateForm()
-        return render(request, 'catalog/generated_playlist.html', {'form': form})
+        return render(request, "catalog/generated_playlist.html", {"form": form})
 
     def post(self, request):
         form = PlaylistGenerateForm(request.POST)
         if form.is_valid():
-            genre = form.cleaned_data['genre']
-            num_songs = form.cleaned_data['num_songs']
+            genre = form.cleaned_data["genre"]
+            num_songs = form.cleaned_data["num_songs"]
 
             playlist = Playlist(name="Generated Playlist", genre=genre)
             playlist.save()
             playlist.generate_playlist(num_songs)
 
-            return redirect('catalog:playlist-detail', pk=playlist.pk)
+            return redirect("catalog:playlist-detail", pk=playlist.pk)
 
-        return render(request, 'catalog/generated_playlist.html', {'form': form})
-
+        return render(request, "catalog/generated_playlist.html", {"form": form})

@@ -2,6 +2,9 @@
 
 Radio Station is a web application that allows users to explore and manage a collection of songs sorted by genres and artists. Authenticated users have the ability to add, update, and delete data within the website.
 also it can create a playlist of songs of particular genre and number of songs
+
+## Check it out!
+   [Radio station project deployed on Heroku]()
 ## Installation
 
 1. Clone the repository:
@@ -9,9 +12,12 @@ also it can create a playlist of songs of particular genre and number of songs
    ```shell
    git clone https://github.com/KirillMelanich/radio_station.git
    
-2. Navigate to the project directory:
+2. Navigate to the project directory and activate virtual environment:
    ```shell
    cd radio-station
+   python3 - venv venv
+   venv/Scripts/activate(on Windows)
+   source venv/bin/activate(on Mac)
    
 3. Install dependencies:
    ```shell
@@ -29,7 +35,7 @@ also it can create a playlist of songs of particular genre and number of songs
       "crispy_bootstrap4",
       "crispy_forms",
    ]
-```
+   ```
 
 ## Usage
 
@@ -90,3 +96,8 @@ User authentication: Allow users to sign up, log in, and manage their account.
 Songs: Browse, add, update, and delete songs in the collection.
 Genres: View and manage genres of songs.
 Artists: Explore and manage artists associated with songs.
+Playlists: You can generate a playlist of particular genre and number of songs
+```
+
+## Demo 
+![Website Interface](demo.png)

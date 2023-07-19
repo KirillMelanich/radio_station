@@ -4,7 +4,7 @@ Radio Station is a web application that allows users to explore and manage a col
 also it can create a playlist of songs of particular genre and number of songs
 
 ## Check it out!
-   [Radio station project deployed on Heroku]()
+   [Radio station project deployed on Render](https://radio-station-2ct2.onrender.com/)
 ## Installation
 
 1. Clone the repository:
@@ -30,7 +30,7 @@ also it can create a playlist of songs of particular genre and number of songs
 5. Add these apps to `INSTALLED_APPS` and install them corresponding to the `CRISPY_TEMPLATE_PACK` bootstrap version.
 
       ```python
-      INSTALLED APPS = [
+        INSTALLED APPS = [
       ...,
       "crispy_bootstrap4",
       "crispy_forms",

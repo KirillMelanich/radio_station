@@ -5,6 +5,12 @@ also it can create a playlist of songs of particular genre and number of songs
 
 ## Check it out!
    [Radio station project deployed on Render](https://radio-station-2ct2.onrender.com/)
+# Log in using:
+    
+      admin: admin
+      password: 1234
+  
+or create your own user using python manage.py createsuperuser
 ## Installation
 
 1. Clone the repository:
@@ -45,14 +51,8 @@ also it can create a playlist of songs of particular genre and number of songs
 2. Open your web browser and visit:
     ```shell 
     http://localhost:8000/
-3. Log in using:
-    ```shell 
-      admin: admin
-      password: 1234
-  
-or create your own user using python manage.py createsuperuser
 
-4. Start exploring and managing the songs, genres, and artists within the Radio Station!
+3. Start exploring and managing the songs, genres, and artists within the Radio Station!
 
 # Folder structure:
          

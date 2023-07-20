@@ -3,13 +3,16 @@
 Radio Station is a web application that allows users to explore and manage a collection of songs sorted by genres and artists. Authenticated users have the ability to add, update, and delete data within the website.
 also it can create a playlist of songs of particular genre and number of songs
 
+## DB Structure 
+![Website Interface](db_structure.png)
+
 ## Check it out!
    [Radio station project deployed on Render](https://radio-station-2ct2.onrender.com/)
 # Log in using:
     
       admin: admin
       password: 1234
-  
+
 or create your own user using python manage.py createsuperuser
 ## Installation
 
